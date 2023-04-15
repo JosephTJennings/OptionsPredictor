@@ -53,6 +53,7 @@ def parseJSON():
                 row = (date + "," + str(expiration_date)  + "," + str(inTheMoney) + "," + str(optionType) + "," + str(strikePrice) + "," + 
                     str(volume) + "," + str(delta) + "," + str(gamma) + "," + str(iv) + "," + str(rho) + "," + str(theta) + "," + str(vega))
                 writeCSVData(row)
+                #print(row)
 
 def writeCSVHeader():
     with open('AAPL_main.csv', 'w', newline='') as file:
