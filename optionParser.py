@@ -2,6 +2,7 @@ import json
 import os
 import shutil
 import csv
+from datetime import datetime
 
 #DATA SOURCE: https://drive.google.com/drive/folders/1a7afPF3k-I0kjA3aybJWR1-rIQTNK_ef
 
@@ -33,6 +34,8 @@ def parseJSON():
             for data in json_data[expiration_date]:
                 row = ""
 
+                optionsExpire = datetime.strptime(expiration_date, "%Y-%m-%d") - datetime.strptime(date, "%Y-%m-%d")
+
                 #Greeks
                 delta = data["OptionGreeks"]["delta"]
                 gamma = data["OptionGreeks"]["gamma"]
@@ -49,8 +52,8 @@ def parseJSON():
                 strikePrice = data["strikePrice"]
                 volume = data["volume"]
                 
-                #date, expiration_date, inTheMoney, optionType, strikePrice, volume, delta, gamma, iv, rho, theta, vega
-                row = (date + "," + str(expiration_date)  + "," + str(inTheMoney) + "," + str(optionType) + "," + str(strikePrice) + "," + 
+                #optionsExpire, inTheMoney, optionType, strikePrice, volume, delta, gamma, iv, rho, theta, vega
+                row = (str(optionsExpire.days) + "," + str(inTheMoney) + "," + str(optionType) + "," + str(strikePrice) + "," + 
                     str(volume) + "," + str(delta) + "," + str(gamma) + "," + str(iv) + "," + str(rho) + "," + str(theta) + "," + str(vega))
                 if(optionType == "PUT"):
                     writeCSVData(row, "AAPL_puts.csv")
@@ -59,11 +62,11 @@ def parseJSON():
                 #print(row)
 
 def writeCSVHeader():
-    with open('AAPL_puts.csv', 'w', newline='') as file:
+    with open('AAPL_calls.csv', 'w', newline='') as file:
         writer = csv.writer(file)
 
         # write the header row
-        header = ["date", "expiration_date", "inTheMoney", "optionType", "strikePrice", "volume", "delta", "gamma", "iv", "rho", "theta", "vega"]
+        header = ["optionsExpire", "inTheMoney", "optionType", "strikePrice", "volume", "delta", "gamma", "iv", "rho", "theta", "vega"]
         writer.writerow(header)
 
 def writeCSVData(optionsData, filename):
@@ -73,6 +76,7 @@ def writeCSVData(optionsData, filename):
         writer.writerow(row)
 
 def main():
+    #writeCSVHeader()
     parseJSON()
 
 if __name__ == "__main__":
