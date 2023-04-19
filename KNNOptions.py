@@ -11,7 +11,7 @@ def predictCalls():
     data = seeds.iloc[:, [0, 5, 6, 7, 8, 9, 10]] #Select optionsExpire,strikePrice,volume,delta,gamma,iv,rho,theta,vega
                                                 #           0                3       4      5     6    7  8    9    10
                                                 
-                                                #Can increase accuracy by only selecting: optionsExpire, delta, gamma, iv, rho, theta, gamma
+                                                #Can increase accuracy by only selecting: optionsExpire, delta, gamma, iv, rho, theta, gamma  (0, 5, 6, 7, 8, 9, 10)
     labels = seeds.iloc[:, [1]] #Select inTheMoney
     x_train, x_test, y_train, y_test = train_test_split(data,labels, test_size=0.2, random_state=1 )
     knn = KNeighborsClassifier() #n_neighbors=30
@@ -33,7 +33,7 @@ def predictPuts():
     data = seeds.iloc[:, [0, 5, 6, 7, 8, 9, 10]] #Select optionsExpire,strikePrice,volume,delta,gamma,iv,rho,theta,vega
                                                 #           0                3       4      5     6    7  8    9    10
                                                 
-                                                #Can increase accuracy by only selecting: optionsExpire, delta, gamma, iv, rho, theta, gamma
+                                                #Can increase accuracy by only selecting: optionsExpire, delta, gamma, iv, rho, theta, gamma  (0, 5, 6, 7, 8, 9, 10)
     labels = seeds.iloc[:, [1]] #Select inTheMoney
     x_train, x_test, y_train, y_test = train_test_split(data,labels, test_size=0.2, random_state=1 )
     knn = KNeighborsClassifier() #n_neighbors=30
@@ -55,7 +55,7 @@ def predictMain():
     data = seeds.iloc[:, [0, 5, 6, 7, 8, 9, 10]] #Select optionsExpire,strikePrice,volume,delta,gamma,iv,rho,theta,vega
                                                 #           0                3       4      5     6    7  8    9    10
                                                 
-                                                #Can increase accuracy by only selecting: optionsExpire, delta, gamma, iv, rho, theta, gamma
+                                                #Can increase accuracy by only selecting: optionsExpire, delta, gamma, iv, rho, theta, gamma  (0, 5, 6, 7, 8, 9, 10)
     labels = seeds.iloc[:, [1]] #Select inTheMoney
     x_train, x_test, y_train, y_test = train_test_split(data,labels, test_size=0.2, random_state=1 )
     knn = KNeighborsClassifier() #n_neighbors=30
