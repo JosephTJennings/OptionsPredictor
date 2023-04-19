@@ -52,25 +52,27 @@ def parseJSON():
                 #date, expiration_date, inTheMoney, optionType, strikePrice, volume, delta, gamma, iv, rho, theta, vega
                 row = (date + "," + str(expiration_date)  + "," + str(inTheMoney) + "," + str(optionType) + "," + str(strikePrice) + "," + 
                     str(volume) + "," + str(delta) + "," + str(gamma) + "," + str(iv) + "," + str(rho) + "," + str(theta) + "," + str(vega))
-                writeCSVData(row)
+                if(optionType == "PUT"):
+                    writeCSVData(row, "AAPL_puts.csv")
+                else:
+                    writeCSVData(row, "AAPL_calls.csv")
                 #print(row)
 
 def writeCSVHeader():
-    with open('AAPL_main.csv', 'w', newline='') as file:
+    with open('AAPL_puts.csv', 'w', newline='') as file:
         writer = csv.writer(file)
 
         # write the header row
         header = ["date", "expiration_date", "inTheMoney", "optionType", "strikePrice", "volume", "delta", "gamma", "iv", "rho", "theta", "vega"]
         writer.writerow(header)
 
-def writeCSVData(optionsData):
+def writeCSVData(optionsData, filename):
     row = optionsData.split(",")
-    with open('AAPL_main.csv', 'a', newline='') as file:
+    with open(filename, 'a', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(row)
 
 def main():
-    writeCSVHeader()
     parseJSON()
 
 if __name__ == "__main__":
