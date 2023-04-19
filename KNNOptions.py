@@ -9,6 +9,8 @@ from sklearn.metrics import f1_score
 def predictCalls():
     seeds = pd.read_csv('AAPL_calls.csv', sep = ',')
     data = seeds.iloc[:, [0, 5, 6, 7, 8, 9, 10]] #Select optionsExpire,strikePrice,volume,delta,gamma,iv,rho,theta,vega
+                                                #           0                3       4      5     6    7  8    9    10
+                                                
                                                 #Can increase accuracy by only selecting: optionsExpire, delta, gamma, iv, rho, theta, gamma
     labels = seeds.iloc[:, [1]] #Select inTheMoney
     x_train, x_test, y_train, y_test = train_test_split(data,labels, test_size=0.2, random_state=1 )
@@ -29,6 +31,8 @@ def predictCalls():
 def predictPuts():
     seeds = pd.read_csv('AAPL_puts.csv', sep = ',')
     data = seeds.iloc[:, [0, 5, 6, 7, 8, 9, 10]] #Select optionsExpire,strikePrice,volume,delta,gamma,iv,rho,theta,vega
+                                                #           0                3       4      5     6    7  8    9    10
+                                                
                                                 #Can increase accuracy by only selecting: optionsExpire, delta, gamma, iv, rho, theta, gamma
     labels = seeds.iloc[:, [1]] #Select inTheMoney
     x_train, x_test, y_train, y_test = train_test_split(data,labels, test_size=0.2, random_state=1 )
@@ -49,6 +53,8 @@ def predictPuts():
 def predictMain():
     seeds = pd.read_csv('AAPL_main.csv', sep = ',')
     data = seeds.iloc[:, [0, 5, 6, 7, 8, 9, 10]] #Select optionsExpire,strikePrice,volume,delta,gamma,iv,rho,theta,vega
+                                                #           0                3       4      5     6    7  8    9    10
+                                                
                                                 #Can increase accuracy by only selecting: optionsExpire, delta, gamma, iv, rho, theta, gamma
     labels = seeds.iloc[:, [1]] #Select inTheMoney
     x_train, x_test, y_train, y_test = train_test_split(data,labels, test_size=0.2, random_state=1 )
