@@ -61,10 +61,11 @@ def parseJSON():
                     writeCSVData(row, "AAPL_puts.csv")
                 else:
                     writeCSVData(row, "AAPL_calls.csv")
+                writeCSVData(row, "AAPL_main.csv")
                 #print(row)
 
 def writeCSVHeader():
-    with open('AAPL_calls.csv', 'w', newline='') as file:
+    with open('AAPL_puts.csv', 'w', newline='') as file:
         writer = csv.writer(file)
 
         # write the header row
