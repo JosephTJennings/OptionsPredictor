@@ -52,6 +52,8 @@ def parseJSON():
                 strikePrice = data["strikePrice"]
                 volume = data["volume"]
                 
+                if(inTheMoney == "y"): inTheMoney = 1
+                else: inTheMoney = -1
                 #optionsExpire, inTheMoney, optionType, strikePrice, volume, delta, gamma, iv, rho, theta, vega
                 row = (str(optionsExpire.days) + "," + str(inTheMoney) + "," + str(optionType) + "," + str(strikePrice) + "," + 
                     str(volume) + "," + str(delta) + "," + str(gamma) + "," + str(iv) + "," + str(rho) + "," + str(theta) + "," + str(vega))
