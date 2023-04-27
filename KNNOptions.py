@@ -13,7 +13,7 @@ def predictKNN(filename):
                                                 
                                                 #Can increase accuracy by only selecting: optionsExpire, delta, gamma, iv, rho, theta, gamma  (0, 5, 6, 7, 8, 9, 10)
     labels = seeds.iloc[:, [1]] #Select inTheMoney
-    x_train, x_test, y_train, y_test = train_test_split(data,labels, test_size=0.2, random_state=1 )
+    x_train, x_test, y_train, y_test = train_test_split(data,labels, test_size=0.2, random_state=1)
     knn = KNeighborsClassifier() #n_neighbors=30
     knn.fit(x_train, y_train.values.ravel())
 
@@ -23,7 +23,7 @@ def predictKNN(filename):
     precision = precision_score(y_test, y_pred)
     recall = recall_score(y_test, y_pred)
     optionsType = filename.split("_")[1].split(".")[0]
-    print("-------" + optionsType + " PREDICITON-------")
+    print("      " + optionsType.upper() + " PREDICITON      ")
     print("Accuracy:", accuracy)
     print("Precision:", precision)
     print("Recall:", recall)
@@ -46,7 +46,7 @@ def predictKNNSplit(filename):
     precision = precision_score(y_test, y_pred)
     recall = recall_score(y_test, y_pred)
     optionsType = filename.split("_")[1].split(".")[0]
-    print("-------" + optionsType + " PREDICITON-------")
+    print("      " + optionsType.upper() + " PREDICITON      ")
     print("Accuracy:", accuracy)
     print("Precision:", precision)
     print("Recall:", recall)
