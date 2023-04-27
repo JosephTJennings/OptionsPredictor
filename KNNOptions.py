@@ -53,11 +53,11 @@ def predictKNNSplit(filename):
     print("")
 
 def main():
-    print("---------RANDOM---------")
+    print("-----------RANDOM-----------")
     predictKNN("AAPL_main.csv")
     predictKNN("AAPL_puts.csv")
     predictKNN("AAPL_calls.csv")
-    print("------------------------")
+    print("----------------------------")
 
     print("\n")
 
