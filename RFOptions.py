@@ -11,7 +11,7 @@ def predictRF(filename):
     X = df.iloc[:, [0, 5, 6, 7, 8, 9, 10]]
     y = df.iloc[:, [1]]
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1, shuffle=False)
 
     clf = RandomForestClassifier()
     clf.fit(X_train, y_train)
